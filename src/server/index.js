@@ -1,3 +1,5 @@
+const env = require ('../../env.js')
+
 // Setup empty JS object to act as endpoint for all routes
 let projectData = [];
 
@@ -25,10 +27,9 @@ app.use(cors());
 app.use(express.static('dist'))
 
 // Setup Server
-app.listen(3000, () => {
-    console.log(`Server up => Try 3000`)
+app.listen(env.port, () => {
+    console.log(`Server up => Try ${env.port}`)
 })
-
 // :::::: Routes ::::::
 
 // Init Route
