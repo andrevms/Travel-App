@@ -4,6 +4,11 @@ import './styles/base.scss'
 //Images
 import header from './images/header.jpg';
 //js
-const env = require('../../env.js')
 
-console.log(env);
+import { formHandler } from './js/formHandler'
+import { geonamesAPI } from './js/geonamesRequest'
+
+export {
+    formHandler,
+    geonamesAPI
+}

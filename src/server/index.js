@@ -1,4 +1,3 @@
-const env = require ('../../env.js')
 
 // Setup empty JS object to act as endpoint for all routes
 let projectData = [];
@@ -14,6 +13,7 @@ var path = require('path')
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { url } = require('inspector');
+const { Console } = require('console');
 
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
@@ -27,8 +27,8 @@ app.use(cors());
 app.use(express.static('dist'))
 
 // Setup Server
-app.listen(env.port, () => {
-    console.log(`Server up => Try ${env.port}`)
+app.listen(process.env.APP_PORT || 3000, () => {
+    console.log(`Server up => Try ${process.env.APP_PORT}`)
 })
 // :::::: Routes ::::::
 
@@ -39,4 +39,18 @@ app.get('/', function (req, res) {
 
 app.post('/form', function (req, res) {
     res.send('Got a POST request')
+})
+
+
+//formHandler
+app.get('/geonames', async (req, res) => {
+    console.log("Entrando aqui")
+    try {
+        const data = await fetch(`http://api.geonames.org/postalCodeSearch?placename=${req.query.city}
+                    &username=${process.env.GEONAMES_USER}`)
+    }catch (e){
+        console.log(e);
+    }
+    console.log("Passou aqui")
+    return data;
 })
