@@ -1,12 +1,10 @@
-const geonamesAPI = async (city) => {
-    const res = await fetch(`/geonames?city=${city}`)
+const geonamesAPI = async (city, country) => {
     try {
-        console.log("Esperando Data");
-        //const data = await res.json();
-        console.log(res);
-        return res;
+        const res = await fetch(`/geonames?city=${city}&country=${country}`)
+        const data = await res.json();
+        return data;
       } catch (error){
-        console.log(error);
+        console.error("Error at src/client/js/geonamesRequest");
     }
 }
 

@@ -1,14 +1,23 @@
-const formHandler = async (input) => {
-    //test value
+const formHandler = async (value) => {
     try{
-        if(input === ''){
+        //Testing null value
+        if(value === ''){
             throw new Error('default value at input');
         }
-        Client.geonamesAPI(input);
+
+        //Slipt values to city & country
+        let r = String(value);
+        let result = r.split(', ');
+
+        //Call functions
+        Client.geonamesAPI(result[0], result[1])
+        .then(function(data){
+            //Taking first data
+            console.log(data.postalCodes[0]);
+        })
     }catch(e) {
         console.error(e);
     }
-    
 }
 
 //Event Listener

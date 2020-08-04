@@ -14,6 +14,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const { url } = require('inspector');
 const { Console } = require('console');
+var async  = require('express-async-await')
+var fetch = require('node-fetch')
 
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
@@ -44,13 +46,12 @@ app.post('/form', function (req, res) {
 
 //formHandler
 app.get('/geonames', async (req, res) => {
-    console.log("Entrando aqui")
     try {
-        const data = await fetch(`http://api.geonames.org/postalCodeSearch?placename=${req.query.city}
-                    &username=${process.env.GEONAMES_USER}`)
+        const data = await fetch(`http://api.geonames.org/postalCodeSearchJSON?placename=${req.query.city}&country=${req.query.country}&username=${process.env.GEONAMES_USER}`);
+        const err = await data.json();
+        res.send(err);
     }catch (e){
         console.log(e);
+        res.send(e);
     }
-    console.log("Passou aqui")
-    return data;
 })
