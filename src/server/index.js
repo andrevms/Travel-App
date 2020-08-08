@@ -55,3 +55,14 @@ app.get('/geonames', async (req, res) => {
         res.send(e);
     }
 })
+
+app.get('/weather', async (req, res) => {
+    try{
+        const data = await fetch(`https://api.weatherbit.io/v2.0/current?&lat=${req.query.lat}&lon=${req.query.lon}&key=${process.env.WEATHERBIT_KEY}`)
+        const err = await data.json();
+        res.send(err);
+    }catch (e){
+        console.log(e);
+        res.send(e);
+    }
+})

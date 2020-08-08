@@ -7,8 +7,10 @@ import header from './images/header.jpg';
 
 import { formHandler } from './js/formHandler'
 import { geonamesAPI } from './js/geonamesRequest'
+import { weatherAPI } from './js/weatherbitRequest'
 
 export {
     formHandler,
-    geonamesAPI
+    geonamesAPI,
+    weatherAPI
 }

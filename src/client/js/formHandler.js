@@ -5,16 +5,23 @@ const formHandler = async (value) => {
             throw new Error('default value at input');
         }
 
-        //Slipt values to city & country
+        //Slipt values to city= result(0) & country= result(1)
         let r = String(value);
         let result = r.split(', ');
 
         //Call functions
+        //const picture = Client.pixabay(city);
         Client.geonamesAPI(result[0], result[1])
-        .then(function(data){
-            //Taking first data
-            console.log(data.postalCodes[0]);
+        .then(async (data) => {
+            //Getting weather info
+            const lat = String(data.postalCodes[0].lat)
+            const lng = String(data.postalCodes[0].lng)
+            const w = await Client.weatherAPI(lat, lng );
+            console.log(w.data[0].app_temp);
+
+            //getting 
         })
+
     }catch(e) {
         console.error(e);
     }
