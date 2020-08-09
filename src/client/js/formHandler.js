@@ -10,16 +10,19 @@ const formHandler = async (value) => {
         let result = r.split(', ');
 
         //Call functions
-        //const picture = Client.pixabay(city);
+        const pictureURL = await Client.pixabayAPI(result[0]);
+        // console.log( pictureURL.hits[0].webformatURL);
+        
         Client.geonamesAPI(result[0], result[1])
         .then(async (data) => {
             //Getting weather info
             const lat = String(data.postalCodes[0].lat)
             const lng = String(data.postalCodes[0].lng)
             const w = await Client.weatherAPI(lat, lng );
-            console.log(w.data[0].app_temp);
+            //weather temp --> console.log(w.data[0].app_temp);
 
-            //getting 
+            //getting
+            
         })
 
     }catch(e) {

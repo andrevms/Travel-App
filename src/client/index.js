@@ -8,9 +8,11 @@ import header from './images/header.jpg';
 import { formHandler } from './js/formHandler'
 import { geonamesAPI } from './js/geonamesRequest'
 import { weatherAPI } from './js/weatherbitRequest'
+import { pixabayAPI } from './js/pixabayRequest'
 
 export {
     formHandler,
     geonamesAPI,
-    weatherAPI
+    weatherAPI,
+    pixabayAPI
 }

@@ -66,3 +66,14 @@ app.get('/weather', async (req, res) => {
         res.send(e);
     }
 })
+
+app.get('/pixabay', async (req, res) => {
+    try {
+        const data = await fetch(`https://pixabay.com/api/?key=${process.env.PIXABAY_KEY}&q=${req.query.local}`);
+        const err = await data.json();
+        res.send(err);
+    }catch (e){
+        console.log(e);
+        res.send(e);
+    }
+})
