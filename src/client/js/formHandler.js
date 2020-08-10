@@ -1,3 +1,5 @@
+const { updateUI } = require("./updateUI");
+
 const formHandler = async (value) => {
     try{
         //Testing null value
@@ -13,18 +15,14 @@ const formHandler = async (value) => {
         const pictureURL = await Client.pixabayAPI(result[0]);
         // console.log( pictureURL.hits[0].webformatURL);
         
-        Client.geonamesAPI(result[0], result[1])
-        .then(async (data) => {
-            //Getting weather info
-            const lat = String(data.postalCodes[0].lat)
-            const lng = String(data.postalCodes[0].lng)
-            const w = await Client.weatherAPI(lat, lng );
-            //weather temp --> console.log(w.data[0].app_temp);
+        const data = await Client.geonamesAPI(result[0], result[1]);
+        //Getting weather info
+        const lat = String(data.postalCodes[0].lat);
+        const lng = String(data.postalCodes[0].lng);
+        const w = await Client.weatherAPI(lat, lng );
+        //weather temp --> console.log(w.data[0].app_temp);
 
-            //getting
-            
-        })
-
+        Client.updateUI(pictureURL.hits[0].webformatURL, result[0], result[1], result[2], result[3]);
     }catch(e) {
         console.error(e);
     }
