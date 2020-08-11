@@ -1,13 +1,17 @@
 # FEND-Capstone---Travel-App
 
 First of all
+
 Redefine .env.default to .env and fill it with your API keys
 
 To build use npm run build-prod
+
 To run use npm run start
+
 To run tests use npm run tests
 
 Examples of working parameters
+
 New York, US, 10/25/2020, 10/25/2020
 
 Remember its still a prototype, so we don't have input treatment yet
