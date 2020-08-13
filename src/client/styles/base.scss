@@ -43,6 +43,10 @@ body {
     }
 }
 
+label {
+    margin: 2px;
+}
+
 #ct-box {
     height: 70%;
     width: 85vw;
@@ -50,12 +54,13 @@ body {
     color: white;
 }
 
-#placehold {
-    width: 50vw;
-    height: 3vh;
+
+.entryStyleBox {
     border: none;
     border-radius: 5px;
     opacity : 0.5;
+    width: auto;
+    height: 3vh;
 }
 
 footer {

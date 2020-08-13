@@ -3,8 +3,8 @@ const weatherAPI = async (lat, lon) => {
         const res = await fetch(`/weather?lat=${lat}&lon=${lon}`)
         const data = await res.json();
         return data;
-      } catch (error){
-        console.error("Error at src/client/js/geonamesRequest");
+      } catch (err){
+        console.error("Error at src/client/js/weatherRequest");
     }
 }
 

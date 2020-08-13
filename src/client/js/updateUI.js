@@ -1,8 +1,8 @@
-const updateUI = (photoURL, city, country, departureDate, returnDate, totalOfDays, weather) => {
+const updateUI = (picture, totalOfDaystoTrip, weather, dateTrip, local, country) => {
   
   let imgBox = document.createElement('img');
-  imgBox.src = photoURL;
-  imgBox.alt = "No Alt photo";
+  imgBox.src = picture.hits[0].webformatURL;
+  imgBox.alt = picture.hits[0].tags;
   imgBox.className = "img_card";
 
   let textConteiner = document.createElement('div');
@@ -10,26 +10,42 @@ const updateUI = (photoURL, city, country, departureDate, returnDate, totalOfDay
 
   //Text conteiner inner html
   let localTravel = document.createElement('h4');
-  localTravel.innerHTML = `Travel : ${city}, ${country}`;
+  localTravel.innerHTML = `Travel : ${local}, ${country}`;
 
-  let departureDateTravel = document.createElement('p');
-  departureDateTravel.innerHTML = `Departure : ${departureDate}`;
+  let departure = document.createElement('h5');
+  departure.innerHTML = `Departure : ${dateTrip}`
+  
+  //Add text header to a div
+  let hdTxtCt = document.createElement('div');
+  hdTxtCt.appendChild(localTravel);
+  hdTxtCt.appendChild(departure);
 
-  let returnDateTravel = document.createElement('p');
-  returnDateTravel.innerHTML = `Return : ${returnDate}`;
-
+  //Get total days
   let daysTraveled = document.createElement('p');
-  daysTraveled.innerHTML = `Trip lenght : ${totalOfDays} days`;
+  daysTraveled.innerHTML = `Trip lenght : ${totalOfDaystoTrip} days`;
+  
+  //Get weather
+  
+  let weatherCT = document.createElement('p');
+  weatherCT.innerHTML = `Tipical weather for the is :`
 
   let todayWeather = document.createElement('p');
-  todayWeather.innerHTML = `Weather : ${weather}C`;
+  todayWeather.innerHTML = `High : ${weather.data[0].app_max_temp} Low : ${weather.data[0].app_min_temp}`;
+
+  let descriptionWeather = document.createElement('p');
+  descriptionWeather.innerHTML = `For the day we have some ${weather.data[0].weather.description}`;
+
+  //Append to div weather
+  let weatherCTBOX = document.createElement('div');
+  weatherCTBOX.appendChild(weatherCT);
+  weatherCTBOX.appendChild(todayWeather);
+  weatherCTBOX.appendChild(descriptionWeather);
+
 
   //Append content to conteiner
-  textConteiner.appendChild(localTravel);
-  textConteiner.appendChild(departureDateTravel);
-  textConteiner.appendChild(returnDateTravel);
+  textConteiner.appendChild(hdTxtCt);
   textConteiner.appendChild(daysTraveled);
-  textConteiner.appendChild(todayWeather);
+  textConteiner.appendChild(weatherCTBOX);
 
   const ctBox = document.getElementById('ct-box');
   let entryHolder = document.createElement('article');
