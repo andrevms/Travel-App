@@ -1,4 +1,5 @@
 const formHandler = async (local, country, dateTrip) => {
+
     //Check null values
     if(local == ''){
         alert("Default entry at locals, please type a city!");
@@ -14,18 +15,20 @@ const formHandler = async (local, country, dateTrip) => {
         alert("Default entry at country, please type a country at ISO 3166-2!");
         throw new Error('default value at country input, formHandle function');
     }
-
+    
     //Calculate days to trip
     const todayDate = new Date();
     const daytrip = new Date(dateTrip);
-    const diff = daytrip.getTime() - todayDate.getTime();
+    const differenceBetweenDates = daytrip.getTime() - todayDate.getTime();
 
-    if(diff < 0) {
+    if(differenceBetweenDates < 0) {
         alert("Invalid date, please use a date after today");
         throw new Error('trip date before today, formHandle function');
     }
     
-    const totalOfDaystoTrip = Math.ceil(Math.abs(diff) / (1000 * 60 * 60 * 24));
+    const millisecondsInDay = 1000 * 60 * 60 * 24;
+    const countdownDaysToTrip = Math.ceil(Math.abs(differenceBetweenDates) / millisecondsInDay);
+    
 
     //Call functions
     const data = await Client.geonamesAPI(local, country);
@@ -52,23 +55,29 @@ const formHandler = async (local, country, dateTrip) => {
         }
     }
     
-    Client.updateUI(picture,totalOfDaystoTrip, weather, dateTrip, local, country);
+    Client.updateUI(picture, countdownDaysToTrip, weather, dateTrip, local, country);
 }
 
 //Event Listener
-const entry = document.getElementById("submitForm");
-const local = document.getElementById("localholder");
-const country = document.getElementById("countryholder");
-const dateTrip = document.getElementById("dateholder");
 
-entry.addEventListener("click", function(event){
-    try{
-        formHandler(local.value,country.value, dateTrip.value);   
-        local.value = '';
-        country.value = '';
-    }
-    catch (e) {
-        console.log(e);
-    }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const entry = document.getElementById("submitForm");
+    const local = document.getElementById("localholder");
+    const country = document.getElementById("countryholder");
+    const dateTrip = document.getElementById("dateholder");
     
+    //event listeners here
+
+    entry.addEventListener("click", function(event){
+        try{
+            formHandler(local.value,country.value, dateTrip.value);   
+            local.value = '';
+            country.value = '';
+        }
+        catch (e) {
+            console.log(e);
+        }
+        
+    });
 });
