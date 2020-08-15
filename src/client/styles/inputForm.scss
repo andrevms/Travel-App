@@ -1,0 +1,35 @@
+//media-size
+$media-width-L: 1200px;
+$input-box-height-L: 4vh;
+$input-box-width-L: auto;
+
+// Input sizes for media max-width: 900
+$input-box-height: 4vh;
+$input-box-width: 70vw;
+$font-size-input: 1.5em;
+
+.entryStyleBox {
+    height: $input-box-height;
+    width: $input-box-width;
+    font-size: $font-size-input;
+    
+    margin: 2px;
+    border: none;
+    border-radius: 5px;
+    opacity : 0.5;
+    text-shadow: 5px 5px 5px rbga(0,0,0,0.5);
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+
+    &:hover {
+        opacity: 1;
+        background: white;
+    }
+
+    @media screen and (min-width: $media-width-L) {
+        $input-box-height: $input-box-height-L;
+        $input-box-width: $input-box-width-L;
+        
+        height: $input-box-height;
+        width: $input-box-width;
+    }
+}

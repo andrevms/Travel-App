@@ -1,5 +1,5 @@
 //css
-import './styles/header.scss'
+import './styles/inputForm.scss'
 import './styles/base.scss'
 import './styles/contCard.scss'
 //Images

@@ -34,11 +34,6 @@ app.listen(process.env.APP_PORT || 3000, () => {
 })
 // :::::: Routes ::::::
 
-// Init Route
-app.get('/', function (req, res) {
-    res.sendFile('dist/index.html')
-})
-
 app.post('/form', function (req, res) {
     res.send('Got a POST request')
 })
@@ -69,7 +64,7 @@ app.get('/weather', async (req, res) => {
 
 app.get('/pixabay', async (req, res) => {
     try {
-        const data = await fetch(`https://pixabay.com/api/?key=${process.env.PIXABAY_KEY}&q=${req.query.local}`);
+        const data = await fetch(`https://pixabay.com/api/?key=${process.env.PIXABAY_KEY}&q=${req.query.local}&category=places&image_type=photo`);
         const err = await data.json();
         res.send(err);
     }catch (e){

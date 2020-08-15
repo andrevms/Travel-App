@@ -1,8 +1,27 @@
-.entry {
-    margin: 20px;   
+//media-size
+$media-width-L: 1200px;
+
+.container-content{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 100%;
+    grid-template-rows: 5vh 1fr;
+}
+
+#ct-box {
+    margin: auto;
+    height: 50vh;
+    overflow: auto;
+    color: white;
+}
+
+.title {
+    color:black;
+}
+
+.entry {  
+    margin: 3vw 2vh;
+    display: grid;
+    
+    grid-template-rows: 1fr 1fr;
 
     background-color: white;
     border: none;
@@ -12,25 +31,26 @@
     &:hover {
         opacity: 0.8;
     }
+
+    @media screen and (min-width: $media-width-L){
+        height: 50vh;
+        margin: 3vw 2vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background-color: white;
+        border: none;
+        border-radius: 20px;   
+        opacity: 0.5;
+    }
 }
 
-
-//1080px
-
 .img_card {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    height: 30vh;
-    width: 25vw;
-
-    margin-left: auto;
-    margin-right: auto;
-    
+    margin: auto;
     border: none;
     border-radius: 20px;
 }
 
 .ct-text {
-    font-size: 2em;
     color: black;
+    margin: 1vw 2vh;
 }
