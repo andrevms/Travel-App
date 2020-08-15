@@ -8,28 +8,26 @@
             <header class="centralize">
                 <h1>Fend Travel APP</h1>
             </header>
-            <main class="centralize">
+            <main>
                 <label for="local">
-                    <input class= "shadow-box entryStyleBox" type="text" id="localholder" name="local" placeholder="City" required="required">
+                    <input class= "entryStyleBox" type="text" id="localholder" name="local" placeholder="City" required="required">
                 </label>
                 <label for="country">
-                    <input class= "shadow-box entryStyleBox" type="text" id="countryholder" name="country" placeholder="Country in ISO 3166-1 alpha-2" required="required">
+                    <input class= " entryStyleBox" type="text" id="countryholder" name="country" placeholder="Country in ISO 3166-1 alpha-2" required="required">
                 </label>
                 <label for="dateTrip">
-                    <input class= "shadow-box entryStyleBox" type="date" id="dateholder" name="dateTrip" required="required">
+                    <input class= "entryStyleBox" type="date" id="dateholder" name="dateTrip" required="required">
                 </label>
                 <label for="submit">
-                    <input class= "shadow-box entryStyleBox" type="submit" id="submitForm" value="Submit">
+                    <input class= "entryStyleBox" type="submit" id="submitForm" value="Submit">
                 </label>
             </main>
-            <div class="container-content centralize">
-                <div id="ct-box">
-                    <div class="title">Most Recent Entry - Scroll to see more</div>
-                </div>
+            <div class="container-content">
+                <div class="title centralize">Most Recent Entry - Scroll to see more</div>
+                <div id="ct-box"></div>
             </div>
         </div>
         <footer class="centralize">All rights reserved</footer>
-        <!--
         <script>
             // Check that service workers are supported
             if ('serviceWorker' in navigator) {
@@ -39,6 +37,5 @@
                 });
             }
         </script>
-        -->
     </body>
 </html>

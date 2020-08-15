@@ -59,8 +59,6 @@ const formHandler = async (local, country, dateTrip) => {
 }
 
 //Event Listener
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const entry = document.getElementById("submitForm");
     const local = document.getElementById("localholder");

@@ -22,7 +22,7 @@ const updateUI = (picture, countdownDaysToTrip, weather, dateTrip, local, countr
 
   //Get total days
   let daysTraveled = document.createElement('p');
-  daysTraveled.innerHTML = `Trip lenght : ${countdownDaysToTrip} days`;
+  daysTraveled.innerHTML = `Days to Trip : ${countdownDaysToTrip} days`;
   
   //Get weather
   
