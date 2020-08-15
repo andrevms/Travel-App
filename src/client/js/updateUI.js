@@ -1,4 +1,4 @@
-const updateUI = (picture, totalOfDaystoTrip, weather, dateTrip, local, country) => {
+const updateUI = (picture, countdownDaysToTrip, weather, dateTrip, local, country) => {
   
   let imgBox = document.createElement('img');
   imgBox.src = picture.hits[0].webformatURL;
@@ -22,7 +22,7 @@ const updateUI = (picture, totalOfDaystoTrip, weather, dateTrip, local, country)
 
   //Get total days
   let daysTraveled = document.createElement('p');
-  daysTraveled.innerHTML = `Trip lenght : ${totalOfDaystoTrip} days`;
+  daysTraveled.innerHTML = `Trip lenght : ${countdownDaysToTrip} days`;
   
   //Get weather
   
